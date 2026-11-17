@@ -6,15 +6,41 @@ Every service instance runs next to a Spectral sidecar. Your service uses this c
 
 ## Install
 
+Releases are published through [JitPack](https://jitpack.io/#cap-theorem/spectral-java).
+
+Maven:
+
 ```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
 <dependency>
-  <groupId>io.github.cap-theorem</groupId>
-  <artifactId>spectral</artifactId>
-  <version>0.1.0</version>
+  <groupId>com.github.cap-theorem</groupId>
+  <artifactId>spectral-java</artifactId>
+  <version>v0.1.0</version>
 </dependency>
 ```
 
-Java 17+. No runtime dependencies (uses `java.net.http`).
+Gradle (Kotlin):
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
+}
+
+dependencies {
+    implementation("com.github.cap-theorem:spectral-java:v0.1.0")
+}
+```
+
+Use `main-SNAPSHOT` as the version to track the latest `main`.
+
+Java 17+. No runtime dependencies (uses `java.net.http`). The package to import is `io.github.captheorem.spectral`.
 
 ## Quickstart
 
@@ -77,6 +103,8 @@ All exceptions are unchecked and extend `SpectralException`:
 ```sh
 mvn verify
 ```
+
+To use a local build from another project on the same machine, run `mvn install` and depend on `io.github.cap-theorem:spectral:0.1.0` (no extra repository needed).
 
 ## HTTP contract
 
