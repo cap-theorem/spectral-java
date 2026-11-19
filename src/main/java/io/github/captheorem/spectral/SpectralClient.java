@@ -89,7 +89,7 @@ public final class SpectralClient {
 
         return new Provider(
                 string(Op.LOOKUP, response, "service"),
-                string(Op.LOOKUP, response, "instance_id"),
+                response.get("instance_id") instanceof String instanceId ? instanceId : "",
                 string(Op.LOOKUP, response, "endpoint"));
     }
 
